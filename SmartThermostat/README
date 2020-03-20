@@ -1,0 +1,24 @@
+/** SIMIONESCU MARIA-ADRIANA, 322CB **/
+
+Javadoc: file:///home/adriana/eclipse-workspace/Tema2/doc/package-summary.html
+
+In aceasta tema am incercat sa simulez functionalitatea unui sistem central de incalzire care functioneaza pe baza unor senzori de temperatura.
+Pentru realizarea acestei functionalitati am creat 2 clase:
+	-clasa de baza 'DataBase' care trateaza executia unor posibile comenzi: OBSERVE, TRIGGER HEAT,TEMPERATURE si LIST
+	-clasa 'secundara' 'Room' care stocheaza pentru fiecare camera din casa informatiile oferite despre aceasta si in acelasi timp stocheaza pe intervale de cate o ora temperaturile inregistrare de dispozitivele instalate in camere pentru fiecare interval de pe durata a 24 de ore masurate in functie de timestampul referinta. Pastrarea temperaturilor pe intervale face mai usoara observarea evolutiei temperaturilor pe un anumit interval.
+
+Pentru o pastrare a datelor cat mai eficienta am folosit diferite structuri din Java Collection Framework:
+	-ArrayList<Room> pentru pastrarea evidentei camerelor din casa
+	-HashMap<Double, Double> pentru pastrarea temperaturilor minime din fiecare camera din ultima ora; am ales HashMap pentru ca fiecarei temperaturi minime (map key) ii corespunde o arie (map value) 
+	-Map <Long, ArrayList<Double>> pentru stocarea temperaturlor pe intervale de cate o ora; Cum fiecare camera contine un dispozitiv ce inregistreaza pe intervalul a 24 de ore temperaturi iar modalitatea cea mai functionala ar fi sa se fragmenteze cele 24 de ore in 24 de intervale a cate o ora, fiecare interval continand o lista de temperaturi am considerat folosirea unei harti cea mai buna modalitate de pastrare a datelor. Cheile hartii sunt capetele inferioare ale fiecarui interval iar valorea corespunzatoare fiecarei chei este o lista cu temperaturile din intervalul format: [capatul inferior + 3600s, capatul inferior]. Pentru accesarea temperaturilor dintr-un anumit interval este nevoie de cunoasterea capatului inferior al intervalului.
+	-ArrayList<Long> pentru pastrarea cheilor corespunzatore unei harti folosite pentru parcurgerea hartii in cautarea temperaturilor minime din ultimele ore de inregistrare a aparatelor
+	-Set <Double> set si HashSet<> pentru eliminarea cat mai usoara a temperaturilor care pot sa apara de mai multe ori in acelasi interval.
+
+Comenzile implementate:
+	-OBSERVE care insereaza valoarea temperaturii corespunzatoare id-ului intr-un interval de timp asociat cu timestamp-ul dat.
+	-TRIGGER HEAT care calculeaza nevoia de a porni centrala conform algoritmului:
+		1. Se vor calcula pentru fiecare camera din casa temperatura cea mai mica din ultima ora.
+		2. Temperatura medie a casei va fi apoi calculată ca media ponderată între ​ temperaturile
+minime ​ din fiecare camera din ​ ultima ora ​ în funcție de ​ suprafața​ camerelor. 
+	-TEMPERATURE care seteaza o noua temperatura dorita in toata casa.
+	-LIST care va afisa in ordine crescatoare a temperaturii valorile observate intre cele doua intervale de timp date ca parametru

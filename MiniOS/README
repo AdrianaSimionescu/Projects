@@ -1,0 +1,61 @@
+/* SIMIONESCU MARIA-ADRIANA - 312 CB */
+
+In aceasta tema am incercat sa simulez functionarea unui sistem de operare.
+
+Pentru gestiunea memoriei am folosit o lista in care am simulat ocuparea 
+memoriei intr-un SO. Am folosit lista pentru a aloca, pentru un proces nou
+creat, o zona de memorie aflata la cea mai mica adresa disponibila. Am sters
+din lista ( eliberat memorie ) celula unui proces care si-a terminat 
+executia. Pentru aceasta am folosit functia "Memory_update" . Pentru a crea
+aceasta lista am folosit functia "InsG" si functia "InsSfG" care insereaza
+elemente la sfarsitul unei liste generice. De asemenea memoria fiecarui proces 
+este pastrata intr-o stiva pentru ca fiecare proces sa aiba dreptul de a
+face push/pop pe stiva proprie. 
+In cazul in care modulul nu reuseste sa aloce memorie pentru un proces nou,
+se va efectua o defragmentare. Defragmentarea se va realiza prin mutarea 
+memoriei proceselor în ordinea crescătoare a PID-ului începând de la adresa 0.
+Pentru defragmentare am folosit functiile: "swap" , "Sortare" pentru sortarea 
+crescatoare a listei de memorie in functie de PID-uri si functia "Defragmentare"
+pentru plasarea memoriei la adresa 0 + dimensiunea memoriei cu PID-ul 
+cel mai mic.
+
+Pentru sistemul de gestiune al proceselor am creat o lista in care se va pastra 
+procesul din starea running, o coada finished si o coada waiting, sortata
+descrescator dupa prioritate, crescator dupa timp de executie ramas, in caz de
+prioritati egale si crescator dupa PID, in caz de prioritate si timp de 
+executie ramas egale. Pentru sortarea cozii de asteptare am folosit 
+functia "SortareWaiting".
+
+Pentru parcurgerea cozilor si stivelor am folosit functiile de baza "Pop", 
+"Push", "ExtrgQ", "IntrQ", ("InitQ","InitS") - pentru initializare, ("DistrS",
+"DistrQ") - pentru stergerea acestora.
+
+Pentru a afisa elemente din cozile waiting si finished am folosit functiile:
+"Print_Waiting", "Print_Finished". 
+
+Pentru a cauta un element in sistem am folosit functiile: "SearchFinished",
+"SearchWaiting" si "SearchRunning".
+
+Pentru a adauga/sterge octeti in/din stiva unui proces am folosit functiile:
+"Wait_and_Pop", "Wait_and_Push", "Run_and_Push", "Run_and_Pop".
+
+Pentru afisarea elementelor din stiva unui proces am folosit functiile:
+"Wait_Stack" si "Run_Stack"
+
+Pentru a calcula timpul total ramas de executie al proceselor din sistem am 
+folosit functiile: "Sum_Running" si "Sum_Waiting".
+
+Pentru gestionarea timpului de executie al proceselor din sistem in fucntie
+de cuanta de timp am folosit functiile: "Run_Time" si "Run_Time_2".
+
+Pentru initializarea listelor de memorie si de procese am folosit functiile:
+"Init_Process" si "Init_Memory".
+
+Pentru utilizarea listelor generice am folosit functiile: "AlocCelulaG",
+"DistrugeLG","InsSfG".
+
+Punctajul obtinut la teste: 48 puncte.
+
+
+Pentru generarea PID-urilor am folosit functia "Search_Best_PID". 
+

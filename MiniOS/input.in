@@ -1,0 +1,26 @@
+500
+add 240 463 23
+add 720 1939 10
+add 860 1939 10
+get 1
+print waiting
+run 500
+get 1
+get 2
+get 3
+push 2 15
+push 2 17
+push 2 18
+pop 2
+print stack 2
+run 1939
+get 1
+get 2
+get 3
+run 1000
+get 1
+get 2
+get 3
+print waiting
+print finished
+finish

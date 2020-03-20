@@ -1,0 +1,41 @@
+/* SIMIONESCU MARIA-ADRIANA, 322CB */
+
+->In aceasta tema am simulat un sistem care se ocupa de managementul unei gale 
+de sport in cadrul careia se vor desfasura mai multe competitii sportive precum
+fotbal,baschet, si handbal.
+
+->Pentru prima cerinta, inscrierea echipelor, am folosit design pattern-urile 
+Singleton si Factory.
+	-> Am folosit Singleton in intermediul clasei -CommandCenter- care se 
+	ocupa cu prelucrarea datelor legate de crearea echipelor si a 
+	informatiilor despre jucatori. Am decis sa folosesc acest pattern luand
+	in calcul faptul ca ar trebui sa existe un singur centru de comanda care	se ocupa cu gestionarea datelor.
+	-> Am folosit Factory in clasa -TeamFactory- pentru a crea echipele in
+	functie de tipul acestora in cazul in care acestea nu fac parte din 
+	competitie sau in functie de tipul echipei si al competitiei pentru 
+	echipele din competitie. Am folosit acest pattern luand in calcul 
+	existenta unui numar vast de tipuri de sporturi deci de echipe ce pot
+	fi construite.
+
+->Pentru a doua cerinta, partea de competitie, am folosit design pattern-urile
+Visitor si Observer;
+	-> Pentru a introduce pattern-ul Visitor m-am folosit de interfetele:
+		- 'Visitor' care defineste metoda 'visit' pentru fiecare tip de 
+		echipa;
+		- 'Visitable' care defineste metoda 'accept' care ii permite
+		visitorului sa actioneze asupra echipelor;
+	-> Clasa 'CompetitionVisitor' implementeaza interfata Visit si metoda 
+	'visit' pentru fiecare tip de echipa cu ajutorul careia se calculeaza
+	scorul din competitie.
+	-> Clasele 'FootballTeam','HandballTeam','BascketballTeam' implementeaza	interfata Visitable pentru a-i permite visitorului sa acceseze datele
+	corespunzatoare fiecarei echipe.
+
+	-> Pentru a introduce pattern-ul 'Observer' am folosit interfetele:
+		- 'Observer' care are o singura metoda 'update' care este 
+	apelata cand starea Subiectului se modifica;
+		- 'Subject' care defineste metodele: registerObserver, 
+	removeObserver si notifyObservers;
+	-> Clasa 'Competition' implementeaza 'Subject' deoarece in timpul 
+	competitiei se modifica constant clasamentul iar clasele 'HandballTeam',	'FootballTeam','BasketballTeam' care implementeaza 'Observer' si contin 	un 'Subject' sunt notificate in legatura cu noul clasament 
+	(List <Team> ranking);  
+	   	

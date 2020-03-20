@@ -1,0 +1,53 @@
+SIMIONESCU MARIA-ADRIANA - 312CB
+
+Prin acest program am incercat sa imit functionalitatea unui ATM, folosindu-ma
+de functii create pe baza cerintelor.
+
+Printre aceste functii se numara: 
+-functii destinate alocarii unei celule de tip TLista(pentru listele HISTORY, 
+unde se pastreaza toate comenzile realizate pe un card),TLSC(pentru listele 
+de tip LSC, care contin cardurile) si TLC(pentru lista primara); 
+-functii care insereaza noi elemente la inceputul unei liste:InsBefore,
+InsBeforeHistory;
+-functii care genereaza liste de un anumit tip folosite pentru creearea 
+ansamblului de liste dorit: GenerateList,GenerateHistory.
+-functii de afisare:print_card(pentru afisarea detaliilor despre un card anume)
+si print_all(care afiseaza intreaga structura de liste)
+-functii de distrugere, pentru stergerea unui card, pentru stergerea celulelor
+alocate in plus,pentru stergerea unei intregi liste sau doar a unei celule:
+DestroyL,DestroyLSC,Destroy_Lists,Destroy_Extra,DestroyLSC1,Delete_card;
+-functii care calculeaza pozitia pe care trebuie adaugat un card in functie de
+numarul cardului: get_card_poz;
+-fuctii care prelucreaza siruri de caractere pentru a verifica sumele de bani 
+pe care un client le poate transfera,depune sau scoate: Verif_sum, Sum, sau
+pentru a verifica corectitudinea unui pin: Verif_Pin;
+-functii care verifica daca un card exista deja in baza de date:
+verify_pin_existence;
+-functii care actualizeaza statusul unui card in functie de numarul de pin-uri
+adaugate gresit: Verify_pin;
+-functii care actualizeaza istoricul unui card, adaugand la inceputul listei
+specifice istoricului cardului noua comanda efectuata asupra cardului impreuna
+cu statusul acesteia SUCCESS/FAIL: History;
+-functii care deblocheaza un card, in urma acesteia cardul va fi activ:
+Unblock_card;
+-functii care modifica pinul unui card daca acesta este introdus corect:
+Change_pin;
+-functii care verifica suma de bani prezenta pe un card: Balance_inquiry;
+-functii care adauga o suma de bani intr-un card si afiseaza noua suma aflata
+pe card in urma comenzii: Recharge;
+-functii care scot bani de pe un card daca fondurile sunt suficiente si suma
+respecta regula de a fi multiplu de 10: Cash_withdrawal;
+-functii care transfera o anumita suma, care trebuie sa fie introdusa corect,
+dintr-un card sursa intr-un card destinatie, daca fondurile sunt suficiente:
+Transfer_funds;
+-functii care anuleaza o tranzactie in cazul in care a fost facuta din greseala
+iar clientul vrea sa isi recupereze banii; acesata nu se poate realiza in cazul
+in care banii de pe cardul destinatie nu sunt suficienti,iar in cazul in care
+se poate anula tranzactia aceasta va disparea din istoricul cardului 
+destinatie:Reverse_transaction;
+
+In acest program predomina listele pentru o mai buna organizare a unei ierarhii
+atat de complexe de informatii,ajutand la ordonarea si plasarea acestora pe
+categorii.
+
+PUNCTAJUL obtinut la teste pe propriul calculator: 65/85.
